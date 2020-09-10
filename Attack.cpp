@@ -5,7 +5,7 @@ Attack::Attack(){
 
 Attack::~Attack(){
 }
-void Attack::atck(Player akt, Player kovetkezo) {
+void Attack::atk(Player akt, Player kovetkezo) {
 	/*Player* akt = playerList;
 	Player* kovetkezo = akt.getKovetkezo();*/
 	int healthA = akt.getHp();
@@ -34,11 +34,4 @@ void Attack::atck(Player akt, Player kovetkezo) {
 		i++;
 	}
 
-}
-
-void Attack::won(Player a, Player b){
-	if (a.getHp() > 0)
-		cout << a.getName() << " wins, " << b.getName() << " loses" << endl;
-	else
-		cout << b.getName() << " wins, " << a.getName() << " loses" << endl;
 }
