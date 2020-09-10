@@ -6,7 +6,9 @@ class Attack{
 public:
 	Attack();
 	~Attack();
-	void atk(Player, Player);
+	void atck(Player, Player);
+	void won(Player, Player);
+	
 
 private:
 	Player* playerList;
