@@ -14,4 +14,3 @@ private:
 	Player* playerList;
 };
 #endif // !ATTACK_H
-
