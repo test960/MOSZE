@@ -16,12 +16,10 @@ public:
 	void setHp(int h);
 	Player* getKovetkezo() const;
 	void setKovetkezo(Player* kovetkezo);
-//	void atk();
 
 private:
 	string name;
 	int hp, dmg;
-//	Player* playerList;
 	Player* kovetkezo;
 };
 
