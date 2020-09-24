@@ -1,5 +1,10 @@
 #include "Player.h"
 
+std::string Player::getName() const
+{
+	return name;
+}
+
 int Player::getHp() const
 {
 	return hp;
@@ -8,11 +13,6 @@ int Player::getHp() const
 int Player::getDmg() const
 {
 	return dmg;
-}
-
-std::string Player::getName() const
-{
-	return name;
 }
 
 void Player::takeDamage(const Unit& enemy)
