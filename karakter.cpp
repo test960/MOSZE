@@ -41,7 +41,7 @@ Player* Player::parseUnit(const std::string& filename){
 		std::getline(file, line);
 		substring = line.substr(line.find(":")+1);
 		int dmg = std::stoi(substring);
-		Player* hi = new Unit(hp,dmg,name);
+		Player* hi = new Player(hp,dmg,name);
 		return hi;
 	}else{
 		throw std::runtime_error("File not found: "+filename);
