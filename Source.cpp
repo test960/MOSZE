@@ -2,14 +2,14 @@
 #include <string>
 #include "Player.h"
 #include "Attack.h"
-using namespace std; 
+using namespace std;
 
 int main() {
 	Attack result;
 	string name;
 	int hp, dmg;
-	
-	//Első játékos feltöltése
+
+	//ElsĹ‘ jĂˇtĂ©kos feltĂ¶ltĂ©se
 	cout << "Name: ";
 	cin >> name;
 	cout << "Hp: ";
@@ -17,8 +17,8 @@ int main() {
 	cout << "Dmg: ";
 	cin >> dmg;
 	Player* a = new Player(name, hp, dmg);
-	
-	//Második játékos feltöltése
+
+	//MĂˇsodik jĂˇtĂ©kos feltĂ¶ltĂ©se
 	cout << "Name: ";
 	cin >> name;
 	cout << "Hp: ";
@@ -27,10 +27,12 @@ int main() {
 	cin >> dmg;
 	Player* b = new Player(name, hp, dmg);
 
+
 	a->print();
 	b->print();
-	
-	result.atck(*a, *b);	
-	
+
+	result.atck(*a, *b);
+	delete a;
+	delete b;
 	return 0;
 }
