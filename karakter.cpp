@@ -1,50 +1,52 @@
 #include "Player.h"
-#include <fstream>
 
-Player::Player(const std::string& name, int hp, const int dmg) : name(name), hp(hp), dmg(dmg){
+int Player::getHp() const
+{
+	return hp;
 }
 
-const std::string& Player::getName() const{
-    return name;    
+int Player::getDmg() const
+{
+	return dmg;
 }
 
-int Player::getHP() const{
-    return hp;   
+std::string Player::getName() const
+{
+	return name;
 }
 
-int Player::getDmg() const{
-    return dmg;
+void Player::takeDamage(const Unit& enemy)
+{
+	int damage = enemy.getDmg();
+	hp -= damage;
+	if (hp < 0)
+	{
+		hp = 0;
+	}
+}
+std::string extractName(const std::string line)
+{
+	std::string name = line.substr(line.find(":"));
+	name.erase(name.find_last_of('"'),name.length()-1);
+	return name.substr(name.find_first_of('"')+1);
 }
 
-Player Player::parseUnit(const std::string& fileName){
-    std::fstream file;
-    std::string line;
-    file.open(fileName);
-    std::string readline, name, hp, dmg;
-    
-    const std::string delimiter = ":";
-    
-    if(file.is_open()){
-        while (getline(file, line)) {
-            for (int i = 0; i < line.size(); i++) {
-                if (isalnum(line[i])) {
-                    if (readline == "name"){
-                        name += line[i];
-                    }
-                    else if (readline == "hp"){
-                        hp += line[i];
-                    }
-                    else if (readline == "dmg"){
-                        dmg += line[i];
-                    }
-                    else readline += line[i];
-                }
-            }
-            readline = "";
-        }
-        
-    }
-    
-    file.close();
-    return Player(name,stoi(hp),stoi(dmg));
+Player* Player::parseUnit(const std::string& filename){
+	std::ifstream file(filename);
+	if(file.good()){
+		std::string line;
+		std::getline(file, line);
+		std::getline(file, line);
+		std::string name = extractName(line);
+		std::getline(file, line);
+		std::string substring = line.substr(line.find(":")+1);
+		int hp = std::stoi(substring);
+		std::getline(file, line);
+		substring = line.substr(line.find(":")+1);
+		int dmg = std::stoi(substring);
+		Player* hi = new Unit(hp,dmg,name);
+		return hi;
+	}else{
+		throw std::runtime_error("File not found: "+filename);
+	}
 }
