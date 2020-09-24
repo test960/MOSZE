@@ -8,7 +8,7 @@ int main() {
 	Attack result;
 	string name;
 	int hp, dmg;
-
+	
 	//Első játékos feltöltése
 	cout << "Name: ";
 	cin >> name;
@@ -27,10 +27,10 @@ int main() {
 	cin >> dmg;
 	Player* b = new Player(name, hp, dmg);
 
-
 	a->print();
 	b->print();
 	
 	result.atck(*a, *b);	
+	
 	return 0;
 }
