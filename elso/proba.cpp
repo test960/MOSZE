@@ -1,6 +1,6 @@
-Unit Unit::parseUnit(std::string fileName)
+Player Player::parsePlayer(std::string fileName)
 {
-	std::ifstream input_file("units/" + fileName);
+	std::ifstream input_file("players/" + fileName);
 	if (input_file.is_open())
 	{
 		std::string name;
@@ -29,6 +29,6 @@ Unit Unit::parseUnit(std::string fileName)
 		input_file.close();
 		int hp = std::stoi(temp_hp);
 		int dmg = std::stoi(temp_dmg);
-		return Unit(name, hp, dmg);
+		return Players(name, hp, dmg);
 	}
 	else throw fileName;
