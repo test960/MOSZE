@@ -1,21 +1,18 @@
 #include "Player.h"
 
-std::string Player::getName() const
-{
+std::string Player::getName() const{
 	return name;
 }
 
-int Player::getHp() const
-{
+int Player::getHp() const{
 	return hp;
 }
 
-int Player::getDmg() const
-{
+int Player::getDmg() const{
 	return dmg;
 }
 
-void Player::takeDamage(const Unit& enemy)
+void Player::Damage(const Player& enemy)
 {
 	int damage = enemy.getDmg();
 	hp -= damage;
