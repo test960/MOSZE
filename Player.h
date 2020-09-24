@@ -17,6 +17,7 @@ public:
 	Player* getKovetkezo() const;
 	void setKovetkezo(Player* kovetkezo);
 
+
 private:
 	string name;
 	int hp, dmg;
